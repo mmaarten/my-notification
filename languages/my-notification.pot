@@ -1,0 +1,65 @@
+# Copyright (C) 2023 Maarten Menten
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: My Notification 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/my-notification\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-02-10T15:17:56+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: my-notification\n"
+
+#. Plugin Name of the plugin
+msgid "My Notification"
+msgstr ""
+
+#. Author of the plugin
+msgid "Maarten Menten"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/maartenm/"
+msgstr ""
+
+#: src/App.php:24
+msgid "id is required."
+msgstr ""
+
+#: src/App.php:30
+msgid "Post is required."
+msgstr ""
+
+#: src/App.php:34
+msgid "You need to be logged in."
+msgstr ""
+
+#: src/App.php:60
+msgid "You are subscribed."
+msgstr ""
+
+#: src/App.php:62
+msgid "Unsubscribe"
+msgstr ""
+
+#: src/App.php:74
+msgid "You are not subscribed."
+msgstr ""
+
+#: src/App.php:76
+msgid "Subscribe"
+msgstr ""
+
+#: src/App.php:95
+#: src/App.php:138
+msgid "Invalid post."
+msgstr ""
+
+#: src/App.php:99
+#: src/App.php:142
+msgid "Invalid user."
+msgstr ""
