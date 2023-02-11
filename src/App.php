@@ -38,7 +38,9 @@ class App
 
             $data = json_decode($post->post_content, true);
 
-            $recipients = $data['carriers']['email']['recipients'];
+            //return var_export($data, true);
+
+            $recipients = isset($data['carriers']['email']['recipients']) ? $data['carriers']['email']['recipients'] : [];
 
             $recipient = false;
             foreach ($recipients as $_recipient) {
@@ -101,23 +103,23 @@ class App
 
         $data = json_decode($post->post_content, true);
 
-        $recipients = &$data['carriers']['email']['recipients'];
+        $recipients = isset($data['carriers']['email']['recipients']) ? $data['carriers']['email']['recipients'] : [];
 
         // Double check
-        $recipient = wp_filter_object_list($recipients, 'recipient', $user_id) ? true : false;
-
-        if ($recipient) {
-            return;
-        }
 
         $recipients[] = [
             'type'      => 'user',
             'recipient' => $user->ID
         ];
 
+        $data['carriers']['email']['recipients'] = $recipients;
+        $data['version'] = time();
+
+        error_log(var_export($data, true));
+
         wp_update_post([
             'ID'           => $post->ID,
-            'post_content' => json_encode($data),
+            'post_content' => wp_json_encode($data),
         ]);
     }
 
@@ -154,10 +156,14 @@ class App
         }
 
         $data['carriers']['email']['recipients'] = $_recipients;
+        $data['version'] = time();
+
+        error_log(var_export($data, true));
+        error_log(var_export(wp_json_encode($data), true));
 
         wp_update_post([
             'ID'           => $post->ID,
-            'post_content' => json_encode($data),
+            'post_content' => wp_json_encode($data),
         ]);
     }
 }
