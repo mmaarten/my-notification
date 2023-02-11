@@ -38,8 +38,6 @@ class App
 
             $data = json_decode($post->post_content, true);
 
-            //return var_export($data, true);
-
             $recipients = isset($data['carriers']['email']['recipients']) ? $data['carriers']['email']['recipients'] : [];
 
             $recipient = false;
@@ -115,11 +113,9 @@ class App
         $data['carriers']['email']['recipients'] = $recipients;
         $data['version'] = time();
 
-        error_log(var_export($data, true));
-
         wp_update_post([
             'ID'           => $post->ID,
-            'post_content' => wp_json_encode($data),
+            'post_content' => wp_slash(json_encode($data)),
         ]);
     }
 
@@ -158,12 +154,9 @@ class App
         $data['carriers']['email']['recipients'] = $_recipients;
         $data['version'] = time();
 
-        error_log(var_export($data, true));
-        error_log(var_export(wp_json_encode($data), true));
-
         wp_update_post([
             'ID'           => $post->ID,
-            'post_content' => wp_json_encode($data),
+            'post_content' => wp_slash(json_encode($data)),
         ]);
     }
 }
