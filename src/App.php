@@ -9,6 +9,7 @@ class App
 
     public static function init()
     {
+        add_action('init', [__CLASS__, 'loadTextdomain']);
         add_action('template_redirect', [__CLASS__,  'subscribe']);
         add_action('template_redirect', [__CLASS__,  'unsubscribe']);
 
@@ -76,6 +77,15 @@ class App
                 __('Subscribe', 'my-notification')
             );
         });
+    }
+
+    public static function loadTextdomain()
+    {
+        load_plugin_textdomain(
+            'my-notification',
+            false,
+            dirname(plugin_basename(MY_NOTIFICATION_PLUGIN_FILE)) . '/languages'
+        );
     }
 
     public static function subscribe()
